@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetCare+ — уход за питомцем</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .shadow-soft {
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        }
+        .shadow-card {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+        .bg-pet-light {
+            background: linear-gradient(135deg, #fef9f0 0%, #fdf5ed 100%);
+        }
+        .bg-pet-warm {
+            background: linear-gradient(135deg, #e8a87c 0%, #d4866a 100%);
+        }
+        .text-pet {
+            color: #d4866a;
+        }
+        .btn-pet {
+            background: linear-gradient(135deg, #e8a87c 0%, #d4866a 100%);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn-pet:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(212, 134, 106, 0.3);
+        }
+        .btn-outline-pet {
+            border: 2px solid #d4866a;
+            color: #d4866a;
+            transition: all 0.2s;
+        }
+        .btn-outline-pet:hover {
+            background: #d4866a;
+            color: white;
+        }
+        .form-input {
+            border: 2px solid #f0e0d8;
+            border-radius: 10px;
+            padding: 0.75rem 1rem;
+            width: 100%;
+            transition: border-color 0.2s;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: #d4866a;
+        }
+        .form-select {
+            border: 2px solid #f0e0d8;
+            border-radius: 10px;
+            padding: 0.75rem 1rem;
+            width: 100%;
+            background: white;
+            transition: border-color 0.2s;
+        }
+        .form-select:focus {
+            outline: none;
+            border-color: #d4866a;
+        }
+        .hero-svg-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .svg-shadow {
+            filter: drop-shadow(0 10px 30px rgba(212, 134, 106, 0.15));
+        }
+        .step-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            border: 1px solid #f5ede7;
+            text-align: center;
+        }
+        .pricing-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            border: 1px solid #f5ede7;
+            text-align: center;
+        }
+        .pricing-card.popular {
+            border: 2px solid #d4866a;
+            position: relative;
+        }
+        .pricing-card.popular::before {
+            content: 'Популярный';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #e8a87c, #d4866a);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.25rem 1.5rem;
+            border-radius: 20px;
+        }
+        .footer-link {
+            color: #999;
+            transition: color 0.2s;
+        }
+        .footer-link:hover {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="bg-white/90 backdrop-blur-sm fixed w-full top-0 z-50 border-b border-gray-100/50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl font-bold text-pet">🐾 PetCare+</span>
+                </div>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#how" class="text-gray-600 hover:text-pet transition">Как работает</a>
+                    <a href="#pricing" class="text-gray-600 hover:text-pet transition">Тарифы</a>
+                    <a href="#apply" class="btn-pet text-white px-5 py-2 rounded-full text-sm font-medium transition">Оформить</a>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-gray-600 text-2xl">☰</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="bg-pet-light pt-28 pb-16 md:pt-32 md:pb-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 leading-tight">
+                        Забота о питомце <br><span class="text-pet">с любовью</span>
+                    </h1>
+                    <p class="text-lg text-gray-600 mt-4 leading-relaxed">
+                        PetCare+ — это подписка на уход за вашим питомцем. Выгул, кормление и визиты с отчётами. Мы заботимся, вы отдыхаете.
+                    </p>
+                    <div class="flex flex-wrap gap-4 mt-8">
+                        <a href="#apply" class="btn-pet text-white px-8 py-3 rounded-full font-medium transition inline-block">
+                            Оформить подписку
+                        </a>
+                        <a href="#pricing" class="btn-outline-pet px-8 py-3 rounded-full font-medium transition inline-block">
+                            Посмотреть тарифы
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-svg-container">
+                    <svg class="svg-shadow w-full max-w-md" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="pawGrad" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#e8a87c"/>
+                                <stop offset="100%" stop-color="#d4866a"/>
+                            </linearGradient>
+                            <linearGradient id="heartGrad" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#f5a9a9"/>
+                                <stop offset="100%" stop-color="#e88484"/>
+                            </linearGradient>
+                            <filter id="shadowPet">
+                                <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#d4866a" flood-opacity="0.15"/>
+                            </filter>
+                        </defs>
+
+                        <!-- Большая лапка -->
+                        <g filter="url(#shadowPet)">
+                            <ellipse cx="200" cy="210" rx="70" ry="60" fill="url(#pawGrad)" opacity="0.9"/>
+                            <ellipse cx="155" cy="170" rx="25" ry="20" fill="url(#pawGrad)" opacity="0.8"/>
+                            <ellipse cx="200" cy="155" rx="25" ry="20" fill="url(#pawGrad)" opacity="0.8"/>
+                            <ellipse cx="245" cy="170" rx="25" ry="20" fill="url(#pawGrad)" opacity="0.8"/>
+                            <path d="M190 200 C190 190 200 180 200 190 C200 180 210 190 210 200 C210 215 200 225 200 230 C200 225 190 215 190 200Z" fill="url(#heartGrad)"/>
+                        </g>
+
+                        <path d="M120 320 C140 300 160 330 180 310 C200 290 220 320 240 300 C260 280 280 310 300 290" stroke="#d4866a" stroke-width="5" stroke-linecap="round" stroke-dasharray="8 4" opacity="0.6"/>
+
+                        <path d="M80 120 C80 115 85 110 85 115 C85 110 90 115 90 120 C90 128 85 133 85 135 C85 133 80 128 80 120Z" fill="url(#heartGrad)" opacity="0.4" transform="scale(0.6)"/>
+                        <path d="M280 80 C280 75 285 70 285 75 C285 70 290 75 290 80 C290 88 285 93 285 95 C285 93 280 88 280 80Z" fill="url(#heartGrad)" opacity="0.3" transform="scale(0.8)"/>
+                        <path d="M330 180 C330 175 335 170 335 175 C335 170 340 175 340 180 C340 188 335 193 335 195 C335 193 330 188 330 180Z" fill="url(#heartGrad)" opacity="0.3"/>
+
+                        <ellipse cx="90" cy="200" rx="15" ry="12" fill="url(#pawGrad)" opacity="0.4"/>
+                        <ellipse cx="82" cy="190" rx="8" ry="6" fill="url(#pawGrad)" opacity="0.3"/>
+                        <ellipse cx="95" cy="185" rx="8" ry="6" fill="url(#pawGrad)" opacity="0.3"/>
+                        <ellipse cx="100" cy="195" rx="8" ry="6" fill="url(#pawGrad)" opacity="0.3"/>
+
+                        <ellipse cx="310" cy="250" rx="15" ry="12" fill="url(#pawGrad)" opacity="0.4"/>
+                        <ellipse cx="302" cy="240" rx="8" ry="6" fill="url(#pawGrad)" opacity="0.3"/>
+                        <ellipse cx="315" cy="235" rx="8" ry="6" fill="url(#pawGrad)" opacity="0.3"/>
+                        <ellipse cx="320" cy="245" rx="8" ry="6" fill="url(#pawGrad)" opacity="0.3"/>
+
+                        <ellipse cx="170" cy="195" rx="20" ry="15" fill="white" opacity="0.2" transform="rotate(-20 170 195)"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" class="py-16 md:py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Как работает <span class="text-pet">PetCare+</span></h2>
+                <p class="text-gray-500 mt-2">Всё просто и прозрачно</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="step-card">
+                    <div class="text-4xl mb-4">📝</div>
+                    <h3 class="font-semibold text-lg text-gray-800">Выберите тариф</h3>
+                    <p class="text-gray-500 text-sm mt-2">Подберите идеальный план для вашего питомца</p>
+                </div>
+                <div class="step-card">
+                    <div class="text-4xl mb-4">🐕</div>
+                    <h3 class="font-semibold text-lg text-gray-800">Познакомьтесь с куратором</h3>
+                    <p class="text-gray-500 text-sm mt-2">Мы подберём специалиста и познакомим вас</p>
+                </div>
+                <div class="step-card">
+                    <div class="text-4xl mb-4">❤️</div>
+                    <h3 class="font-semibold text-lg text-gray-800">Получайте отчёты</h3>
+                    <p class="text-gray-500 text-sm mt-2">Фото, видео и детали каждого визита</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing" class="py-16 md:py-20 bg-pet-light">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Наши <span class="text-pet">тарифы</span></h2>
+                <p class="text-gray-500 mt-2">Выберите идеальный план для вашего питомца</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Start -->
+                <div class="pricing-card">
+                    <h3 class="text-xl font-bold text-gray-800">Start</h3>
+                    <p class="text-4xl font-bold text-pet mt-4">999 ₽</p>
+                    <p class="text-gray-500 text-sm">в месяц</p>
+                    <ul class="mt-6 space-y-3 text-left text-gray-600">
+                        <li class="flex items-center gap-2">🐾 1 визит в неделю</li>
+                        <li class="flex items-center gap-2">🐕 Прогулка 30 мин</li>
+                        <li class="flex items-center gap-2">📱 Отчёт в приложении</li>
+                        <li class="flex items-center gap-2 text-gray-400 line-through">🎥 Фото и видео отчёт</li>
+                    </ul>
+                    <a href="#apply" class="block btn-outline-pet px-6 py-3 rounded-full font-medium transition mt-8">Выбрать</a>
+                </div>
+
+                <!-- Plus -->
+                <div class="pricing-card popular">
+                    <h3 class="text-xl font-bold text-gray-800">Plus</h3>
+                    <p class="text-4xl font-bold text-pet mt-4">1 899 ₽</p>
+                    <p class="text-gray-500 text-sm">в месяц</p>
+                    <ul class="mt-6 space-y-3 text-left text-gray-600">
+                        <li class="flex items-center gap-2">🐾 2 визита в неделю</li>
+                        <li class="flex items-center gap-2">🐕 Прогулка 45 мин</li>
+                        <li class="flex items-center gap-2">📱 Отчёт в приложении</li>
+                        <li class="flex items-center gap-2">🎥 Фото и видео отчёт</li>
+                    </ul>
+                    <a href="#apply" class="block btn-pet text-white px-6 py-3 rounded-full font-medium transition mt-8">Выбрать</a>
+                </div>
+
+                <!-- Pro -->
+                <div class="pricing-card">
+                    <h3 class="text-xl font-bold text-gray-800">Pro</h3>
+                    <p class="text-4xl font-bold text-pet mt-4">3 499 ₽</p>
+                    <p class="text-gray-500 text-sm">в месяц</p>
+                    <ul class="mt-6 space-y-3 text-left text-gray-600">
+                        <li class="flex items-center gap-2">🐾 3 визита в неделю</li>
+                        <li class="flex items-center gap-2">🐕 Прогулка 60 мин</li>
+                        <li class="flex items-center gap-2">📱 Отчёт в приложении</li>
+                        <li class="flex items-center gap-2">🎥 Фото и видео отчёт</li>
+                    </ul>
+                    <a href="#apply" class="block btn-outline-pet px-6 py-3 rounded-full font-medium transition mt-8">Выбрать</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- APPLICATION FORM -->
+    <section id="apply" class="py-16 md:py-20 bg-white">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Оставьте <span class="text-pet">заявку</span></h2>
+                <p class="text-gray-500 mt-2">Мы подберём лучшего специалиста для вашего питомца</p>
+            </div>
+            <div class="bg-pet-light p-8 md:p-12 rounded-3xl shadow-soft">
+                <form id="orderForm" class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Имя *</label>
+                        <input type="text" id="name" class="form-input" placeholder="Анна" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Телефон *</label>
+                        <input type="tel" id="phone" class="form-input" placeholder="+7 (999) 123-45-67" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Тариф *</label>
+                        <select id="tariff" class="form-select">
+                            <option value="">Выберите тариф</option>
+                            <option value="Start">Start — 999 ₽</option>
+                            <option value="Plus">Plus — 1 899 ₽</option>
+                            <option value="Pro">Pro — 3 499 ₽</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Комментарий</label>
+                        <textarea id="comment" class="form-input" rows="3" placeholder="Особенности питомца, пожелания..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-pet text-white w-full py-3 rounded-full font-medium text-lg transition">
+                        Оставить заявку
+                    </button>
+                </form>
+                <p class="text-center text-xs text-gray-400 mt-4">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="text-sm text-gray-400">© 2026 PetCare+. Все права защищены.</div>
+                <div class="flex gap-6 text-sm text-gray-400">
+                    <a href="#" class="footer-link">Политика конфиденциальности</a>
+                    <a href="#" class="footer-link">Пользовательское соглашение</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const tariff = document.getElementById('tariff').value;
+
+            if (name === '' || phone === '' || tariff === '') {
+                alert('Пожалуйста, заполните имя, телефон и выберите тариф.');
+            } else {
+                alert('Заявка отправлена! Мы подберём специалиста и свяжемся с вами.');
+            }
+        });
+    </script>
+</body>
+</html>
